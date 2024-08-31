@@ -1,0 +1,41 @@
+## Installing Tensorflow with GPU Support for Fast Training
+
+To install TensorFlow with GPU support in an Anaconda environment in 2024, follow these steps:
+
+### Create and Activate Anaconda Environment
+
+First, create a new Anaconda environment and activate it by going to the Anaconda Prompt and running the following commands:
+
+```bash
+conda create --name tf_gpu python=3.9
+conda activate tf_gpu
+```
+
+### Install CUDA and cuDNN
+
+Install the CUDA Toolkit and cuDNN library using Conda:
+
+```bash
+conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
+```
+
+### Install TensorFlow
+
+Upgrade pip and install TensorFlow:
+
+```bash
+pip install --upgrade pip
+pip install "tensorflow<2.11"
+```
+
+*Note: As of 2024, versions above 2.10 are not officially supported for GPU on Windows native installations.*
+
+### Verify the Installation
+
+To verify that TensorFlow can access your GPU:
+
+```bash
+python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+```
+
+If a list of GPU devices is returned, you've successfully installed TensorFlow with GPU support.
